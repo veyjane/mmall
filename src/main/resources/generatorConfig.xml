@@ -23,7 +23,7 @@
                 driverClass="${db.driverClassName}"
                 connectionURL="${db.url}"
                 userId="${db.username}"
-                password="${ll}">
+                password="${db.password}">
         </jdbcConnection>
 
 
