@@ -8,15 +8,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
-/**
- * Created by geely
- */
 public class PropertiesUtil {
 
     private static Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 
     private static Properties props;
 
+    //静态代码块在类加载的时候执行，且只执行一次
+    //执行顺序：静态代码块>普通代码块>构造代码块
     static {
         String fileName = "mmall.properties";
         props = new Properties();
