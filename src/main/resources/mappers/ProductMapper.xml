@@ -161,6 +161,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Product" >
     update mmall_product
     set category_id = #{categoryId,jdbcType=INTEGER},
@@ -176,4 +177,26 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_product
+    ORDER by id asc
+  </select>
+
+  <select id="selectByNameAndProductId" resultMap="BaseResultMap" resultType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_product
+-- where标签能够自动去除第一个连接where的and
+    <where>
+      <if test="productName !=null">
+        and name like #{productName}
+      </if>
+      <if test="productId !=null">
+        and id = #{productId}
+      </if>
+    </where>
+  </select>
 </mapper>
